@@ -1,16 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    
+    <KanbanBoard :stages="statuses" > 
+    </KanbanBoard>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import draggable from 'vuedraggable'
+
+import KanbanBoard from './components/KanbanBoard.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    KanbanBoard,
+    //draggable
+  },
+  data() {
+    return {
+      statuses: ['Applied', 'Phone Screen', 'On-Site', 'Accepted', 'Rejected'],
+      cards: [],
+    };
   }
+
 }
 </script>
 
