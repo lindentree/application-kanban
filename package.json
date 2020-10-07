@@ -13,6 +13,8 @@
     "mongoose": "^5.10.8"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "@vue/test-utils": "^1.1.0",
+    "nodemon": "^2.0.4",
+    "vue-jest": "^3.0.7"
   }
 }
