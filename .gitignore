@@ -26,6 +26,8 @@ example/build/
 # Yarn Integrity file
 .yarn-integrity
 
+.env
+
 .DS_Store
 /lib
 /dist
