@@ -8,9 +8,8 @@
 
 <script>
 
-
 import KanbanBoard from './components/KanbanBoard.vue'
-
+import { api } from './helpers';
 
 
 export default {
@@ -40,6 +39,9 @@ export default {
 
       ],
     };
+  },
+  async mounted() {
+    this.applicants = await api.getapplicants();
   }
 
 }

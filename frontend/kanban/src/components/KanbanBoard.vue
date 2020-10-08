@@ -27,6 +27,8 @@
   import { defineComponent } from 'vue'
   import { VueDraggableNext } from 'vue-draggable-next'
   import ApplicantCard from './ApplicantCard.vue'
+  
+
 
 export default defineComponent({
   name: "KanbanBoard",
