@@ -6,16 +6,17 @@
 
 <script>
 export default {
-  name: "",
+  name: "ApplicantCard",
   props: {
       info: {
         type: Object,
         required: true,
-      },
+      }
   },
 
   data() {
-    
+    return {
+    };
   }
 }
 </script>

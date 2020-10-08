@@ -1,27 +1,28 @@
 <template>
   <div id="app">
     
-    <KanbanBoard :stages="statuses" :applicants="cards" > 
+    <KanbanBoard :stages="statuses" :applicants="applicants" > 
     </KanbanBoard>
   </div>
 </template>
 
 <script>
-//import draggable from 'vuedraggable'
+
 
 import KanbanBoard from './components/KanbanBoard.vue'
+
+
 
 export default {
   name: 'App',
   components: {
-    KanbanBoard,
-    //draggable
+    KanbanBoard
   },
   data() {
     return {
       statuses: [
       'Applied', 'Phone Screen', 'On-Site', 'Accepted', 'Rejected'],
-      cards: [
+      applicants: [
         {
         id: 1, 
        name: 'Linden',

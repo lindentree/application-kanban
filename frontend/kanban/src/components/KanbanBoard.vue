@@ -8,14 +8,14 @@
         >
        <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status}}</p>
 
-       <draggable :list="applicants" :animation="200" ghost-class="ghost-card" group="tasks">
-            <task-card
+       <draggable :list="applicants" :animation="200" ghost-class="ghost-card" group="applicants">
+            <ApplicantCard
               v-for="(applicant) in applicants"
+              :info="applicant"
               :key="applicant.id"
               :name="applicant.name"
               class="mt-3 cursor-move"
-            ></task-card>
-            <!-- </transition-group> -->
+            ></ApplicantCard>
           </draggable>
 
          
@@ -24,13 +24,15 @@
 </template>
 
 <script>
-  //import draggable from 'vuedraggable'
-  //import ApplicantCard from './ApplicantCard.vue'
-export default {
+  import { defineComponent } from 'vue'
+  import { VueDraggableNext } from 'vue-draggable-next'
+  import ApplicantCard from './ApplicantCard.vue'
+
+export default defineComponent({
   name: "KanbanBoard",
   components: {
-    //ApplicantCard,
-    //draggable
+    ApplicantCard,
+    draggable: VueDraggableNext,
   },
 
   props: {
@@ -47,7 +49,7 @@ export default {
     return {
     };
   }
-};
+});
 </script>
 
 <style scoped>
