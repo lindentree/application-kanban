@@ -17,10 +17,10 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 );
 
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
  
-app.get('/', function (req, res) {
-  res.send('Hello World')
-});
+routes(app);
  
 app.listen(port);
 
