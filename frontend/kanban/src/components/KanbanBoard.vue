@@ -1,20 +1,15 @@
 <template>
-  <div id="board">
-    <div class="flex justify-center">
-      <div class="min-h-screen flex overflow-x-scroll py-12">
+  <div id="board" class="relative p-2 flex overflow-x-auto h-full">
+    
         <div
           v-for="status in stages"
           :key="status"
-          class="bg-gray-100 rounded-lg px-3 py-3 column-width rounded mr-4"
+          class="column"
         >
        <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status}}</p>
 
          
-      
         </div>
-      
-      </div>
-    </div>
   </div>
 </template>
 
@@ -43,7 +38,22 @@ export default {
 
 <style scoped>
 
+  #board {
+    display: grid;
+    grid-auto-columns: 272px;
+    grid-auto-flow: column;
+    grid-gap: 8px;
+  }
 
+
+  .column {
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-gap: 10px;
+    padding: 10px;
+
+    background-color: grey;
+  }
 .column-width {
   min-width: 320px;
   width: 320px;
