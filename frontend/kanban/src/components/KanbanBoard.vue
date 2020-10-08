@@ -68,7 +68,7 @@ export default defineComponent({
     grid-gap: 10px;
     padding: 10px;
 
-    background-color: grey;
+    background-color: pink;
   }
 .column-width {
   min-width: 320px;

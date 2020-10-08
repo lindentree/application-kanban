@@ -26,9 +26,18 @@ export default {
         {
         id: 1, 
        name: 'Linden',
-       contact: '1234567'
+       contact: '1234567',
+       comments: ''
+
+       },
+       {
+        id: 2, 
+       name: 'Jenna',
+       contact: '7456789',
+       comments: ''
 
        }
+
       ],
     };
   }
