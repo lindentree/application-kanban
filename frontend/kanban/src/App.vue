@@ -61,7 +61,20 @@ export default {
 
       this.statuses[idx].applicants.push(applicants[i]);
     }
-  }
+  },
+  methods: {
+    updateApplicantStatus: function() {
+        // get your info then...
+      
+
+        if(this.debounce) return
+        this.debounce = setTimeout(function() {
+            this.debounce = false 
+
+            api.updateapplicants()
+        }.bind(this), 2000)
+    }
+} 
 
 }
 </script>

@@ -72,7 +72,7 @@ export default defineComponent({
     grid-gap: 10px;
     padding: 10px;
 
-    background-color: pink;
+    background-color: gold;
   }
 
   .column-width {
