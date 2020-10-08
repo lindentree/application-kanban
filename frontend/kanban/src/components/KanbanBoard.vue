@@ -6,16 +6,18 @@
           :key="status"
           class="column"
         >
-       <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status}}</p>
+       <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status.status}}</p>
 
-       <draggable :list="applicants" :animation="200" ghost-class="ghost-card" group="applicants">
+       <draggable tag="ul" :list="status.applicants" :animation="200" ghost-class="ghost-card" group="status.applicants">
             <ApplicantCard
-              v-for="(applicant) in applicants"
+              v-for="(applicant) in status.applicants"
               :info="applicant"
               :key="applicant.id"
               :name="applicant.name"
-              class="mt-3 cursor-move"
-            ></ApplicantCard>
+              class="p-4 mb-3 flex justify-between items-center bg-white shadow rounded-lg cursor-move"
+            >
+
+            </ApplicantCard>
           </draggable>
 
          
@@ -27,6 +29,8 @@
   import { defineComponent } from 'vue'
   import { VueDraggableNext } from 'vue-draggable-next'
   import ApplicantCard from './ApplicantCard.vue'
+  
+
 
 export default defineComponent({
   name: "KanbanBoard",
@@ -68,12 +72,13 @@ export default defineComponent({
     grid-gap: 10px;
     padding: 10px;
 
-    background-color: pink;
+    background-color: gold;
   }
-.column-width {
-  min-width: 320px;
-  width: 320px;
-}
+
+  .column-width {
+    min-width: 320px;
+    width: 320px;
+  }
 
 .ghost-card {
   opacity: 0.5;
