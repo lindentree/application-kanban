@@ -8,14 +8,16 @@
         >
        <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status}}</p>
 
-       <draggable :list="applicants" :animation="200" ghost-class="ghost-card" group="applicants">
+       <draggable tag="ul" :list="applicants" :animation="200" ghost-class="ghost-card" group="applicants">
             <ApplicantCard
               v-for="(applicant) in applicants"
               :info="applicant"
               :key="applicant.id"
               :name="applicant.name"
-              class="mt-3 cursor-move"
-            ></ApplicantCard>
+              class="p-4 mb-3 flex justify-between items-center bg-white shadow rounded-lg cursor-move"
+            >
+
+            </ApplicantCard>
           </draggable>
 
          
@@ -72,14 +74,15 @@ export default defineComponent({
 
     background-color: pink;
   }
-.column-width {
-  min-width: 320px;
-  width: 320px;
-}
+
+  .column-width {
+    min-width: 320px;
+    width: 320px;
+  }
 
 .ghost-card {
   opacity: 0.5;
-  background: #F7FAFC;
+  background: yellow;
   border: 1px solid #4299e1;
 }
 </style>
