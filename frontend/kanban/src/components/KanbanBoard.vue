@@ -6,11 +6,11 @@
           :key="status"
           class="column"
         >
-       <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status}}</p>
+       <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status.status}}</p>
 
-       <draggable tag="ul" :list="applicants" :animation="200" ghost-class="ghost-card" group="applicants">
+       <draggable tag="ul" :list="status.applicants" :animation="200" ghost-class="ghost-card" group="status.applicants">
             <ApplicantCard
-              v-for="(applicant) in applicants"
+              v-for="(applicant) in status.applicants"
               :info="applicant"
               :key="applicant.id"
               :name="applicant.name"
@@ -82,7 +82,7 @@ export default defineComponent({
 
 .ghost-card {
   opacity: 0.5;
-  background: yellow;
+  background: #F7FAFC;
   border: 1px solid #4299e1;
 }
 </style>
