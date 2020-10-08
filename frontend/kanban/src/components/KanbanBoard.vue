@@ -7,11 +7,10 @@
           :key="status"
           class="bg-gray-100 rounded-lg px-3 py-3 column-width rounded mr-4"
         >
-          <h2>
-          {{ status }}
+       <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status}}</p>
+
          
-          <a>+</a>
-        </h2>
+      
         </div>
       
       </div>
