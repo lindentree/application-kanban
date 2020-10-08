@@ -8,6 +8,16 @@
         >
        <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status}}</p>
 
+       <draggable :list="applicants" :animation="200" ghost-class="ghost-card" group="tasks">
+            <task-card
+              v-for="(applicant) in applicants"
+              :key="applicant.id"
+              :name="applicant.name"
+              class="mt-3 cursor-move"
+            ></task-card>
+            <!-- </transition-group> -->
+          </draggable>
+
          
         </div>
   </div>
@@ -28,6 +38,10 @@ export default {
         type: Array,
         required: true,
       },
+
+      applicants: {
+        type: Array
+      }
   },
   data() {
     return {

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     
-    <KanbanBoard :stages="statuses" > 
+    <KanbanBoard :stages="statuses" :applicants="cards" > 
     </KanbanBoard>
   </div>
 </template>
@@ -19,8 +19,16 @@ export default {
   },
   data() {
     return {
-      statuses: ['Applied', 'Phone Screen', 'On-Site', 'Accepted', 'Rejected'],
-      cards: [],
+      statuses: [
+      'Applied', 'Phone Screen', 'On-Site', 'Accepted', 'Rejected'],
+      cards: [
+        {
+        id: 1, 
+       name: 'Linden',
+       contact: '1234567'
+
+       }
+      ],
     };
   }
 
