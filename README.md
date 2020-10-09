@@ -13,7 +13,7 @@ Example: POST http://localhost:3000/applicants/ with a body of
 
 }
 
-This will create an applicant card in the column matching the applicant status.
+This will create an applicant card in the column matching the applicant status. (You will have to refresh the app to see the new card)
 
 ## Setup
 

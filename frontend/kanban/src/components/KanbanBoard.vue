@@ -8,7 +8,7 @@
         >
        <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status.status}}</p>
 
-       <draggable tag="ul" :list="status.applicants" :change="changed(list.status, $event)" :animation="200" ghost-class="ghost-card" group="status.applicants" :move="cardMoved">
+       <draggable tag="ul" :list="status.applicants" :animation="200" ghost-class="ghost-card" group="status.applicants" :move="cardMoved">
             <ApplicantCard
               v-for="(applicant) in status.applicants"
               v-bind="applicant"
@@ -32,17 +32,16 @@
   import { defineComponent } from 'vue'
   import { VueDraggableNext } from 'vue-draggable-next'
   import ApplicantCard from './ApplicantCard.vue'
+  import { api } from '../helpers';
   
+  export default defineComponent({
+    name: "KanbanBoard",
+    components: {
+      ApplicantCard,
+      draggable: VueDraggableNext,
+    },
 
-
-export default defineComponent({
-  name: "KanbanBoard",
-  components: {
-    ApplicantCard,
-    draggable: VueDraggableNext,
-  },
-
-  props: {
+    props: {
       stages: {
         type: Array,
         required: true,
@@ -51,24 +50,24 @@ export default defineComponent({
       applicants: {
         type: Array
       }
-  },
-  data() {
-    return {
-    };
-  },
-  methods: {
-    cardMoved: function(event) {
-      console.log(event)
-      let data = new FormData
-      data.append("applicant[status]", status)
-      
-      await api.updateapplicant(data)
-
-
-
     },
-  }
-});
+    data() {
+      return {
+      };
+    },
+    methods: {
+      cardMoved: async function(event) {
+        console.log(event)
+        let data = new FormData
+        //data.append("applicant[status]", status)
+      
+        await api.updateapplicant(data)
+
+
+
+      },
+    }
+  });
 </script>
 
 <style scoped>
