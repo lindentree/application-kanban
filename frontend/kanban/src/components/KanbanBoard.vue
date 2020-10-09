@@ -8,12 +8,15 @@
         >
        <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status.status}}</p>
 
-       <draggable tag="ul" :list="status.applicants" :animation="200" ghost-class="ghost-card" group="status.applicants">
+       <draggable tag="ul" :list="status.applicants" :change="changed(list.status, $event)" :animation="200" ghost-class="ghost-card" group="status.applicants" :move="cardMoved">
             <ApplicantCard
               v-for="(applicant) in status.applicants"
+              v-bind="applicant"
               :info="applicant"
               :key="applicant.id"
               :name="applicant.name"
+              :contact="applicant.contact"
+              :status="applicant.status"
               class="p-4 mb-3 flex justify-between items-center bg-white shadow rounded-lg cursor-move"
             >
 
@@ -52,6 +55,18 @@ export default defineComponent({
   data() {
     return {
     };
+  },
+  methods: {
+    cardMoved: function(event) {
+      console.log(event)
+      let data = new FormData
+      data.append("applicant[status]", status)
+      
+      await api.updateapplicant(data)
+
+
+
+    },
   }
 });
 </script>
