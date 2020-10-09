@@ -17,8 +17,10 @@ services:
     ports:
       - 27017:27017
   client:
+    container_name: client
     build: ./frontend/kanban
     ports:
       - 8080:8080
     volumes:
-      - ./frontend/kanban:/client
+      - ${PWD-.}/client:/usr/src/app
+      - /usr/src/app/node_modules

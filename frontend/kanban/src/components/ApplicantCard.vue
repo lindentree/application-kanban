@@ -1,6 +1,8 @@
 <template>
   <div>
-    {{ info }}
+    <h2>
+      {{name}}
+    </h2>
   </div>
 </template>
 
@@ -11,7 +13,17 @@ export default {
       info: {
         type: Object,
         required: true,
-      }
+      },
+      name: {
+        type: String,
+      },
+      contact: {
+        type: String,
+      },
+      status: {
+        type: String,
+        required: true,
+     },
   },
 
   data() {

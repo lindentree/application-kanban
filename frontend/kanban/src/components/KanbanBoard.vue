@@ -11,9 +11,12 @@
        <draggable tag="ul" :list="status.applicants" :animation="200" ghost-class="ghost-card" group="status.applicants">
             <ApplicantCard
               v-for="(applicant) in status.applicants"
+              v-bind="applicant"
               :info="applicant"
               :key="applicant.id"
               :name="applicant.name"
+              :contact="applicant.contact"
+              :sratus="applicant.status"
               class="p-4 mb-3 flex justify-between items-center bg-white shadow rounded-lg cursor-move"
             >
 
