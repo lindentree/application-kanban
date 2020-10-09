@@ -1,6 +1,6 @@
-#Toy Kanban Board - Hiring Process
+# Toy Kanban Board - Hiring Process
 
-##Context
+## Context
 
 This is a full-stack Trello app, with a MongoDB/Node.js(Express) back-end, and a Vue 3.0 front-end. Applicant cards can be created or modified via the API using Postman or curl.
 
