@@ -3,6 +3,10 @@
     <h2>
       {{name}}
     </h2>
+
+    <p>
+      {{contact}}
+    </p>
   </div>
 </template>
 
