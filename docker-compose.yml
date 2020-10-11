@@ -18,9 +18,12 @@ services:
       - 27017:27017
   client:
     container_name: client
+    restart: always
     build: ./frontend/kanban
+    environment:
+      - CHOKIDAR_USEPOLLING=true
     ports:
       - 8080:8080
     volumes:
-      - ${PWD-.}/client:/usr/src/app
+      - ${PWD-.}/client:/usr/src/app:delegated
       - /usr/src/app/node_modules

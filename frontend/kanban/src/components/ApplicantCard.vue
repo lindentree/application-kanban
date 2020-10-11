@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <h2>
       {{name}}
     </h2>
@@ -27,7 +27,14 @@ export default {
       status: {
         type: String,
         required: true,
-     },
+     }
+  },
+
+  computed: {
+    card_status () {
+      console.log(this.status)
+      return status
+    }
   },
 
   data() {

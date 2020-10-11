@@ -2,15 +2,15 @@
   <div id="board" class="relative p-2 flex overflow-x-auto h-full">
     
         <div
-          v-for="status in stages"
-          :key="status"
+          v-for="(value, index) in stages"
+          :key="index"
           class="column"
         >
-       <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status.status}}</p>
+       <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{index}}</p>
 
-       <draggable tag="ul" :list="status.applicants" :animation="200" ghost-class="ghost-card" group="status.applicants" :move="cardMoved">
+       <draggable tag="ul" :list="value" :animation="200" ghost-class="ghost-card" group="value" :move="cardMoved">
             <ApplicantCard
-              v-for="(applicant) in status.applicants"
+              v-for="(applicant) in value"
               v-bind="applicant"
               :info="applicant"
               :key="applicant.id"
@@ -43,7 +43,7 @@
 
     props: {
       stages: {
-        type: Array,
+        type: Object,
         required: true,
       },
 
@@ -57,7 +57,7 @@
     },
     methods: {
       cardMoved: async function(event) {
-        console.log(event)
+        console.log("EVENT", event)
         let data = new FormData
         //data.append("applicant[status]", status)
       
