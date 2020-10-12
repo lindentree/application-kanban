@@ -21,7 +21,6 @@ export default {
     return {
       statuses: {
       
-        
       'Applied': [],
       'Phone Screen': [],
       'On-Site': [],

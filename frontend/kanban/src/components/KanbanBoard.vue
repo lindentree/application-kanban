@@ -8,7 +8,7 @@
         >
        <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{index}}</p>
 
-       <draggable tag="ul" :list="value" :animation="200" ghost-class="ghost-card" group="value" :move="cardMoved">
+       <draggable tag="ul" :list="index" :animation="200" ghost-class="ghost-card" group="value" :move="cardMoved" @change="log">
             <ApplicantCard
               v-for="(applicant) in value"
               v-bind="applicant"
@@ -63,9 +63,11 @@
       
         await api.updateapplicant(data)
 
-
-
       },
+
+       log: function(e) {
+          console.log(e);
+      }
     }
   });
 </script>
@@ -86,7 +88,7 @@
     grid-gap: 10px;
     padding: 10px;
 
-    background-color: gold;
+    background-color: pink;
   }
 
   .column-width {

@@ -25,5 +25,5 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ${PWD-.}/client:/usr/src/app:delegated
-      - /usr/src/app/node_modules
+      - .:/usr/src/app
+      - .:/usr/src/app/node_modules:cached
