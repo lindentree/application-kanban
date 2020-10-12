@@ -8,7 +8,7 @@
         >
        <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{index}}</p>
 
-       <draggable tag="ul" :list="index" :animation="200" ghost-class="ghost-card" group="value" :move="cardMoved" @change="log">
+       <draggable tag="ul" :name="index" :list="value" :animation="100" ghost-class="ghost-card" group="value" :move="checkMove" @change="log" >
             <ApplicantCard
               v-for="(applicant) in value"
               v-bind="applicant"
@@ -53,6 +53,7 @@
     },
     data() {
       return {
+        enabled: true
       };
     },
     methods: {
@@ -67,6 +68,10 @@
 
        log: function(e) {
           console.log(e);
+          //console.log(e);
+      },
+      checkMove: function(evt){
+        console.log('CHECK', evt.relatedContext.element.name);
       }
     }
   });
@@ -88,7 +93,7 @@
     grid-gap: 10px;
     padding: 10px;
 
-    background-color: pink;
+    background-color: silver;
   }
 
   .column-width {

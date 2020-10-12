@@ -5,6 +5,9 @@ services:
     container_name: express-mongo
     restart: always
     build: ./
+    environment:
+      CHOKIDAR_USEPOLLING: 'true'
+      CHOKIDAR_INTERVAL: 300
     ports:
       - 3000:3000
     volumes:
@@ -21,9 +24,10 @@ services:
     restart: always
     build: ./frontend/kanban
     environment:
-      - CHOKIDAR_USEPOLLING=true
+      CHOKIDAR_USEPOLLING: 'true'
+      CHOKIDAR_INTERVAL: 300
     ports:
       - 8080:8080
     volumes:
-      - .:/usr/src/app
-      - .:/usr/src/app/node_modules:cached
+      - ./frontend/kanban/src:/usr/src/client
+      - ./frontend/kanban:/usr/src/client/node_modules:cached

@@ -32,7 +32,7 @@ export default {
 
   computed: {
     card_status () {
-      console.log(this.status)
+      console.log('STATUS', this.status)
       return status
     }
   },
