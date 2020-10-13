@@ -18,10 +18,12 @@ services:
     container_name: mongo
     image: mongo
     ports:
-      - 27017:27017
+      - '27017:27017'
+    volumes: 
+      - /data/db
   client:
     container_name: client
-    #restart: always
+    restart: always
     build: 
       context: ./frontend/kanban
     command: npm run serve
@@ -30,7 +32,6 @@ services:
       CHOKIDAR_INTERVAL: 300
     ports:
       - '8080:8080'
-      - '8081:8081'
     volumes:
-      #- ./frontend/kanban/src:/usr/src/client
-      - /usr/src/client/node_modules:cached
+      - './frontend/kanban:/client'
+      - '/client/node_modules'

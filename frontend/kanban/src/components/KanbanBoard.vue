@@ -93,7 +93,7 @@
     grid-auto-rows: max-content;
     grid-gap: 10px;
     padding: 10px;
-    background-color: pink;
+    background-color: #80D4FF;
   }
 
   .column-width {
