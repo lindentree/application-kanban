@@ -71,7 +71,9 @@
           //console.log(e);
       },
       checkMove: function(evt){
-        console.log('CHECK', evt.relatedContext.element.name);
+        console.log('CHECK', evt.relatedContext);
+
+        console.log('SEC CHECK', evt.draggedContext);
       }
     }
   });
@@ -86,14 +88,12 @@
     grid-gap: 8px;
   }
 
-
   .column {
     display: grid;
     grid-auto-rows: max-content;
     grid-gap: 10px;
     padding: 10px;
-
-    background-color: silver;
+    background-color: pink;
   }
 
   .column-width {

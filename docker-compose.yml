@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 
 services:
   app:
@@ -21,13 +21,16 @@ services:
       - 27017:27017
   client:
     container_name: client
-    restart: always
-    build: ./frontend/kanban
+    #restart: always
+    build: 
+      context: ./frontend/kanban
+    command: npm run serve
     environment:
       CHOKIDAR_USEPOLLING: 'true'
       CHOKIDAR_INTERVAL: 300
     ports:
-      - 8080:8080
+      - '8080:8080'
+      - '8081:8081'
     volumes:
-      - ./frontend/kanban/src:/usr/src/client
-      - ./frontend/kanban:/usr/src/client/node_modules:cached
+      #- ./frontend/kanban/src:/usr/src/client
+      - /usr/src/client/node_modules:cached
