@@ -19,33 +19,14 @@ export default {
   },
   data() {
     return {
-      statuses: [
-      {
-        status:'Applied',
-        applicants: []
-
-      },
-       {
-        status:'Phone Screen',
-        applicants: []
-
-      },
-       {
-        status: 'On-Site',
-        applicants: []
-
-      },
-      {
-        status: 'Accepted',
-        applicants: []
-
-      },
-       {
-        status: 'Rejected',
-        applicants: []
-
+      statuses: {
+      
+      'Applied': [],
+      'Phone Screen': [],
+      'On-Site': [],
+      'Accepted': [],
+      'Rejected': []
       }
-     ]
      
     };
   },
@@ -53,14 +34,10 @@ export default {
     let applicants = await api.getapplicants();
 
     for (let i = 0; i < applicants.length; i+=1) {
-      let idx = this.statuses.findIndex(function(e) {
-        return e.status === applicants[i].status;
-      });
-
-      console.log(idx)
-
-      this.statuses[idx].applicants.push(applicants[i]);
+      this.statuses[applicants[i].status].push(applicants[i])
     }
+
+      
   },
   methods: {
     updateApplicantStatus: function() {

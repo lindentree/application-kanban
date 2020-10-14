@@ -2,18 +2,18 @@
   <div id="board" class="relative p-2 flex overflow-x-auto h-full">
     
         <div
-          v-for="status in stages"
-          :key="status"
+          v-for="(value, index) in stages"
+          :key="index"
           class="column"
         >
-       <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{status.status}}</p>
+       <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{index}}</p>
 
-       <draggable tag="ul" :list="status.applicants" :animation="200" ghost-class="ghost-card" group="status.applicants" :move="cardMoved">
+       <draggable tag="ul" :name="index" :list="value" :animation="100" ghost-class="ghost-card" :group="{ name: 'index' }" @end="updateApplicantStatus" :key="index">
             <ApplicantCard
-              v-for="(applicant) in status.applicants"
+              v-for="(applicant) in value"
               v-bind="applicant"
               :info="applicant"
-              :key="applicant.id"
+              :key="applicant._id"
               :name="applicant.name"
               :contact="applicant.contact"
               :status="applicant.status"
@@ -43,7 +43,7 @@
 
     props: {
       stages: {
-        type: Array,
+        type: Object,
         required: true,
       },
 
@@ -53,19 +53,24 @@
     },
     data() {
       return {
+        enabled: true
       };
     },
     methods: {
-      cardMoved: async function(event) {
-        console.log(event)
-        let data = new FormData
-        //data.append("applicant[status]", status)
-      
-        await api.updateapplicant(data)
+ 
+      updateApplicantStatus: async function(event) {
 
+        let id = event.item.getAttribute('_id');
+        let newStatus = event.to.getAttribute('name');
+    
+        let applicant = {
+          applicantId: id,
+          status: newStatus
+        }
 
+        await api.updateapplicant(applicant);
 
-      },
+      }
     }
   });
 </script>
@@ -79,14 +84,12 @@
     grid-gap: 8px;
   }
 
-
   .column {
     display: grid;
     grid-auto-rows: max-content;
     grid-gap: 10px;
     padding: 10px;
-
-    background-color: gold;
+    background-color: #80D4FF;
   }
 
   .column-width {
