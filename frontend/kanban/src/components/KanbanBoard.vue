@@ -8,12 +8,12 @@
         >
        <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{index}}</p>
 
-       <draggable tag="ul" :name="index" :list="value" :animation="100" ghost-class="ghost-card" :group="{ name: 'index' }" :move="checkMove" @end="log" :key="index">
+       <draggable tag="ul" :name="index" :list="value" :animation="100" ghost-class="ghost-card" :group="{ name: 'index' }" @end="updateApplicantStatus" :key="index">
             <ApplicantCard
               v-for="(applicant) in value"
               v-bind="applicant"
               :info="applicant"
-              :key="applicant.id"
+              :key="applicant._id"
               :name="applicant.name"
               :contact="applicant.contact"
               :status="applicant.status"
@@ -57,24 +57,19 @@
       };
     },
     methods: {
-      cardMoved: async function(event) {
-        console.log("EVENT", event)
-        let data = new FormData
-        //data.append("applicant[status]", status)
-      
-        await api.updateapplicant(data)
+ 
+      updateApplicantStatus: async function(event) {
 
-      },
+        let id = event.item.getAttribute('_id');
+        let newStatus = event.to.getAttribute('name');
+    
+        let applicant = {
+          applicantId: id,
+          status: newStatus
+        }
 
-       log: function(e) {
-          console.log('END', e.to.getAttribute('name'));
-   
-      },
-      checkMove: function(evt){
-        //console.log('TEST', this.$props, this.$data);
-        //console.log('CHECK', evt.to.getAttribute('name'));
+        await api.updateapplicant(applicant);
 
-        console.log('SEC CHECK', evt.draggedContext.element.name);
       }
     }
   });

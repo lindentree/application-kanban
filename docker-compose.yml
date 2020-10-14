@@ -20,7 +20,7 @@ services:
     ports:
       - '27017:27017'
     volumes: 
-      - /data/db
+      - /usr/local/var/mongodb:/data/db/
   client:
     container_name: client
     restart: always

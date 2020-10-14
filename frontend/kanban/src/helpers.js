@@ -21,7 +21,8 @@ export const api = {
     return res.data;
   }),
   updateapplicant: (async payload => {
-    const res = await axios.put(baseURL + payload._id, payload);
+    
+    const res = await axios.put(baseURL + payload.applicantId, payload);
     return res.data;
   })
 };

@@ -24,9 +24,10 @@ exports.read_a_applicant = (req, res) => {
 };
 
 exports.update_a_applicant = (req, res) => {
+ 
   applicant.findOneAndUpdate(
     { _id: req.params.applicantId },
-    req.body,
+    { $set: { "status": req.body.status} },
     { new: true },
     (err, applicant) => {
       if (err) res.send(err);
