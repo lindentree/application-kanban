@@ -17,7 +17,7 @@ This will create an applicant card in the column matching the applicant status. 
 
 The cards will update their status accordingly in the database as they move between columns. You can also modify the front-end code while the container is running, it will hot-reload.
 
- and the data should persist in your local MongoDB even if you shut down the container(you may have to modify the volume path in the docker compose)
+Also, the applicant data should persist in your local MongoDB even if you shut down the container(you may have to modify the volume mount path in the docker compose).
 
 ## Setup
 
