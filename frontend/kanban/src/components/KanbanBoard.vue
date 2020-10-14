@@ -8,7 +8,7 @@
         >
        <p class="text-gray-700 font-semibold font-sans tracking-wide text-sm">{{index}}</p>
 
-       <draggable tag="ul" :name="index" :list="value" :animation="100" ghost-class="ghost-card" group="value" :move="checkMove" @change="log" >
+       <draggable tag="ul" :name="index" :list="value" :animation="100" ghost-class="ghost-card" :group="{ name: 'index' }" :move="checkMove" @end="log" :key="index">
             <ApplicantCard
               v-for="(applicant) in value"
               v-bind="applicant"
@@ -67,13 +67,14 @@
       },
 
        log: function(e) {
-          console.log(e);
-          //console.log(e);
+          console.log('END', e.to.getAttribute('name'));
+   
       },
       checkMove: function(evt){
-        console.log('CHECK', evt.relatedContext);
+        //console.log('TEST', this.$props, this.$data);
+        //console.log('CHECK', evt.to.getAttribute('name'));
 
-        console.log('SEC CHECK', evt.draggedContext);
+        console.log('SEC CHECK', evt.draggedContext.element.name);
       }
     }
   });
